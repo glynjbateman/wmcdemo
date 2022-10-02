@@ -95,6 +95,11 @@ namespace wmcdemo.ViewModels
         {
             get
             {
+                if (Fuel == 0 && Food == 0 && Parking == 0)
+                {
+                    return "";
+                }
+
                 return $"Total expense claim is {TotalExpenses.ToString("C")}.The highest category was {HighestCategory}.";
             }
         }

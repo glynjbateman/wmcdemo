@@ -25,7 +25,7 @@
                 <Entry Text="{Binding Fuel}" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"></Entry>
                 <Entry Text="{Binding Parking}" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1"></Entry>
                 <Entry Text="{Binding Food}" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1"></Entry>
-                <Label Text="{Binding TotalExpensesString}" Margin="10" Grid.Row="4" Grid.ColumnSpan="2"></Label>
+                <Label Text="{Binding TotalExpensesString}" HorizontalOptions="Center" Margin="10" Grid.Row="4" Grid.ColumnSpan="2"></Label>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

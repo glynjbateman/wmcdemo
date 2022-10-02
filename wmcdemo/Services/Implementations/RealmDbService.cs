@@ -49,7 +49,8 @@ namespace wmcdemo.Services.Implementations
         {
             try
             {
-                return RealmInstance.All<KeyValueRealmObject>().Where(x => x.Key == key).FirstOrDefault().Value;
+                var result = RealmInstance.All<KeyValueRealmObject>().Where(x => x.Key == key).FirstOrDefault();
+                return result?.Value ?? null;
             }
             catch (Exception ex)
             {
