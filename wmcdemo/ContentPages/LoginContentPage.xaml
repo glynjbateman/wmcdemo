@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Base:ContentPageBase xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Base="clr-namespace:wmcdemo.ContentPages" 
+             x:Class="wmcdemo.ContentPages.LoginContentPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="SlateGray">
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Image Source="wmc_logo.png" WidthRequest="150" Margin="10"></Image>
+                <StackLayout Padding="5" BackgroundColor="White" Margin="5" HorizontalOptions="Center">
+                    <Entry Text="{Binding Username}" Placeholder="Username.." WidthRequest="150"></Entry>
+                </StackLayout>
+                <StackLayout Padding="5" BackgroundColor="White" Margin="5" HorizontalOptions="Center">
+                    <Entry Text="{Binding Password}" Placeholder="Password.." WidthRequest="150"></Entry>
+                </StackLayout>
+                <Label Margin="5" TextColor="Orange" Text="LOGIN FAILED. Please try again." HorizontalOptions="Center" HorizontalTextAlignment="Center" IsVisible="{Binding LoginFailed}"></Label>
+                <Button TextColor="White" BackgroundColor="CornflowerBlue" IsEnabled="{Binding LoginEnabled}" HorizontalOptions="Center" Margin="5" Text="Login" Command="{Binding LoginCommand}"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</Base:ContentPageBase>
