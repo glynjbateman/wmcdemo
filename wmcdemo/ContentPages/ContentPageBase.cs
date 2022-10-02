@@ -24,5 +24,11 @@ namespace wmcdemo.ContentPages
             base.OnAppearing();
             ViewModel.OnAppearing();
         }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            ViewModel.OnDissappearing();
+        }
     }
 }

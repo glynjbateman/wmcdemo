@@ -15,5 +15,6 @@ namespace wmcdemo.ViewModels
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
         public abstract void OnAppearing();
+        public abstract void OnDissappearing();
     }
 }

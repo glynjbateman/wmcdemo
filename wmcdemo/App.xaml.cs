@@ -23,6 +23,7 @@ namespace wmcdemo
             DIContainer.Register<ILoginService, LoginService>().AsSingleton();
             DIContainer.Register<INavigationService, NavigationService>().AsSingleton();
             DIContainer.Register<ILocalDbService, RealmDbService>().AsSingleton();
+            DIContainer.Register<IMediaPicker, MediaPicker>().AsSingleton();
 
             //View Models
             DIContainer.Register<LoginViewModel>().AsSingleton();

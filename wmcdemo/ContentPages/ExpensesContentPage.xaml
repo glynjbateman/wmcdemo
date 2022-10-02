@@ -12,6 +12,8 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -22,10 +24,24 @@
                 <Label VerticalOptions="Center" Text="Fuel" Grid.Row="1"></Label>
                 <Label VerticalOptions="Center" Text="Parking" Grid.Row="2"></Label>
                 <Label VerticalOptions="Center" Text="Food" Grid.Row="3"></Label>
-                <Entry Text="{Binding Fuel}" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"></Entry>
-                <Entry Text="{Binding Parking}" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1"></Entry>
-                <Entry Text="{Binding Food}" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1"></Entry>
+                <Entry Text="{Binding Fuel}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"></Entry>
+                <Entry Text="{Binding Parking}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1"></Entry>
+                <Entry Text="{Binding Food}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1"></Entry>
                 <Label Text="{Binding TotalExpensesString}" HorizontalOptions="Center" Margin="10" Grid.Row="4" Grid.ColumnSpan="2"></Label>
+                <Button Command="{Binding SelectPhotoCommand}" Grid.Row="5" Grid.ColumnSpan="2" Text="UPLOAD IMAGE" BackgroundColor="DarkGreen" TextColor="White"></Button>
+                <CollectionView ItemsSource="{Binding Images}" Grid.Row="6" Grid.ColumnSpan="2" HeightRequest="120">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Horizontal"
+                        Span="1" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Image Source="{Binding .}" Margin="5" WidthRequest="100" HeightRequest="100" Aspect="AspectFit"></Image>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

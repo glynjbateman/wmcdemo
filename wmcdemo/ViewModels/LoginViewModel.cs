@@ -95,5 +95,7 @@ namespace wmcdemo.ViewModels
             Username = await _localDbService.ReadKeyValue("username");
             Password = "";
         }
+
+        public override void OnDissappearing() { }
     }
 }

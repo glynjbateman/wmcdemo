@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Text;
 using wmcdemo.Services.Interfaces;
+using Xamarin.Forms;
 
 namespace wmcdemo.ViewModels
 {
@@ -10,11 +13,17 @@ namespace wmcdemo.ViewModels
         public override string Title => "Expenses";
 
         private INavigationService _navigationService;
+        private IMediaPicker _mediaPicker;
 
-        public ExpensesViewModel(INavigationService navigationService)
+        public ExpensesViewModel(INavigationService navigationService, IMediaPicker mediaPicker)
         {
             this._navigationService = navigationService;
+            this._mediaPicker = mediaPicker;
         }
+
+        private bool SelectingPhoto { get; set; }
+
+        public ObservableCollection<ImageSource> Images { get; set; } = new ObservableCollection<ImageSource>();
 
         private decimal _fuel { get; set; }
         public decimal Fuel
@@ -104,6 +113,32 @@ namespace wmcdemo.ViewModels
             }
         }
 
+        public Command SelectPhotoCommand => new Command(async () =>
+        {
+            try
+            {
+                SelectingPhoto = true;
+                Stream stream = await _mediaPicker.SelectPhoto();
+                if (stream != null)
+                {
+                    Images.Add(ImageSource.FromStream(() => stream));
+                }
+            }
+            catch (Exception ex) { }
+            finally
+            {
+                SelectingPhoto = false;
+            }
+        });
+
         public override void OnAppearing() { }
+
+        public override void OnDissappearing() 
+        {
+            if (!SelectingPhoto)
+            {
+                Images.Clear();
+            }
+        }
     }
 }
